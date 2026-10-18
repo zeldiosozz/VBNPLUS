@@ -1,0 +1,11 @@
+backend proccess:
+the guest sending the order req from the website:
+order_data:
+first_name,
+last_name,
+business_type,
+phone_number,
+address,
+package_type
+
+

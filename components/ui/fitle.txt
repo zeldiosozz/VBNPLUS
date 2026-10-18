@@ -1,0 +1,38 @@
+
+https://www.aidesigner.ai/backgrounds/liquid-metal
+{/* Liquid Metal — render inside a container with className="relative isolate"
+   (isolate keeps the -z-10 layer inside the container so body backgrounds
+    can never paint over the effect) */}
+<div
+  data-aifx="liquid-metal"
+  data-aifx-colors="#0d1322,#bf9b30,#ffbf00"
+  className="absolute inset-0 -z-10 pointer-events-none"
+  aria-hidden="true"
+/>
+
+{/* Runtime — load once per app, e.g. in app/layout.tsx
+   import Script from "next/script" */}
+<Script src="https://cdn.aidesigner.ai/effects/runtime/v1.js" strategy="afterInteractive" />
+
+--------------------------------------------------
+https://www.aidesigner.ai/backgrounds/dither/remix
+
+{/* Riso Dither — render inside a container with className="relative isolate"
+   (isolate keeps the -z-10 layer inside the container so body backgrounds
+    can never paint over the effect) */}
+<div
+  data-aifx="dither"
+  className="absolute inset-0 -z-10 pointer-events-none"
+  aria-hidden="true"
+/>
+
+{/* Runtime — load once per app, e.g. in app/layout.tsx
+   import Script from "next/script" */}
+<Script src="https://cdn.aidesigner.ai/effects/runtime/v1.js" strategy="afterInteractive" />
+
+
+
+- 22 design facebook
+- 4 reels.
+- sponsering on marketing 8k on reels.
+- budget 25K.
