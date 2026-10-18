@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type MenuItem = { href: string; label: string };
 
@@ -18,6 +18,25 @@ export default function HeroMobileMenu({
   demoLabel: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [menuMounted, setMenuMounted] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }, []);
+
+  const showMenu = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setMenuMounted(true);
+    requestAnimationFrame(() => setOpen(true));
+  };
+
+  const hideMenu = () => {
+    setOpen(false);
+    closeTimer.current = setTimeout(() => setMenuMounted(false), 260);
+  };
+
+  const toggleMenu = () => (open ? hideMenu() : showMenu());
 
   return (
     <div className="relative lg:hidden">
@@ -26,7 +45,7 @@ export default function HeroMobileMenu({
         aria-label={open ? closeLabel : menuLabel}
         aria-expanded={open}
         aria-controls="mobile-primary-nav"
-        onClick={() => setOpen((current) => !current)}
+        onClick={toggleMenu}
         className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
         {open ? (
@@ -40,18 +59,19 @@ export default function HeroMobileMenu({
         )}
       </button>
 
-      {open && (
+      {menuMounted && (
         <nav
           id="mobile-primary-nav"
           aria-label={navLabel}
-          className="absolute right-0 top-[calc(100%_+_0.75rem)] z-50 w-[calc(100vw_-_3rem)] rounded-2xl border border-white/15 bg-[#11101e]/95 p-2 shadow-[0_16px_48px_rgba(0,0,0,.35)] backdrop-blur-xl sm:w-[420px]"
+          data-open={open}
+          className="mobile-menu-panel fixed left-1/2 top-20 z-[60] max-h-[calc(100dvh-6rem)] w-[calc(100vw_-_2rem)] max-w-[420px] -translate-x-1/2 overflow-y-auto rounded-2xl border border-white/15 bg-[#11101e] p-2 shadow-[0_16px_48px_rgba(0,0,0,.45)] sm:top-24"
         >
           <ul className="grid gap-1">
             {items.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="mobile-menu-item">
                 <a
                   href={item.href}
-                  onClick={() => setOpen(false)}
+                  onClick={hideMenu}
                   className="flex min-h-11 items-center rounded-xl px-4 text-start text-[15px] font-medium text-white/80 transition-colors hover:bg-white/[0.08] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
                 >
                   {item.label}
@@ -61,8 +81,8 @@ export default function HeroMobileMenu({
           </ul>
           <a
             href="#demo"
-            onClick={() => setOpen(false)}
-            className="mt-2 block rounded-xl p-[1px] [background:linear-gradient(110deg,#ffe52d,#ff432e)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            onClick={hideMenu}
+            className="mobile-menu-cta mt-2 block rounded-xl p-[1px] [background:linear-gradient(110deg,#ffe52d,#ff432e)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <span className="flex min-h-11 items-center justify-center rounded-xl bg-[#080614] px-4 text-[14px] font-semibold text-white">
               {demoLabel}

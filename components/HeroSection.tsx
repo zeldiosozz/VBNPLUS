@@ -75,7 +75,7 @@ export default function HeroSection({ dictionary, locale }: { dictionary: Dictio
       className="relative isolate flex min-h-[780px] flex-col overflow-hidden bg-transparent text-white sm:min-h-[820px]"
       aria-labelledby="hero-title"
     >
-      <header className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center px-6 pt-7 sm:px-10 lg:grid-cols-[1fr_auto_1fr] lg:px-0">
+      <header className="relative z-20 mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center px-6 pt-7 sm:px-10 lg:grid-cols-[1fr_auto_1fr] lg:px-0">
         <a href="#home" className="flex w-fit items-center gap-3 lg:col-start-1 lg:row-start-1" aria-label="VBN+ home">
           <Image src="/images/vbn-logo.png" alt="VBN+" width={240} height={80} className="navbar-logo h-auto w-[120px]" />
         </a>

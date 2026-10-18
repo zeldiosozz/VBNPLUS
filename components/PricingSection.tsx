@@ -72,13 +72,14 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
               {/* <p className="mt-2 text-[15px] leading-6 text-white/70">{plan.billing}</p> */}
               <div className="mt-4 h-px bg-white/[0.12]" />
               <p className="mt-4 text-[15px] leading-6">{copy.included}</p>
-              <ul className="mt-4 flex flex-col gap-[17px] backdrop-blur-md bg-black/20 w-fit px-4 py-2 rounded-xl">
-                {copy.features.map((feature, index) => {
+              <ul className="mt-4 flex flex-col gap-[17px] backdrop-blur-md bg-black/20 px-4 py-3 rounded-xl">
+                {plan.features.map((feature, index) => {
                   const unavailable = (plan.unavailable as readonly number[]).includes(index);
                   return (
                     <li key={feature} className="flex items-center gap-3 text-[15px] leading-5">
                       <CheckIcon />
-                      <span className={unavailable ? "line-through decoration-white/80" : ""}>{feature}</span>
+                      <span>{feature}</span>
+                      {/* <span className={unavailable ? "line-through decoration-white/80" : ""}>{feature}</span> */}
                     </li>
                   );
                 })}
