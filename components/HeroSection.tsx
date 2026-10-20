@@ -6,66 +6,13 @@ import HeroDesktopNavigation from "../components/HeroDesktopNavigation";
 import type { Dictionary, Locale } from "../lib/dictionaries";
 
 const partners = [
-  { name: "BLUEDIAMOND", mark: "diamond" },
-  { name: "beehouse", mark: "stack" },
-  { name: "CLEANENERGY", mark: "plant" },
-  { name: "chekpeople", mark: "check" },
-  { name: "BLUEMOUNT", mark: "mountain" },
-  { name: "blueenergy", mark: "gear" },
+  { name: "Alsharaf Tours", image: "/images/partners/marks/alsharaf-tours.png" },
+  { name: "Raafat Elbaz for Export & Import", image: "/images/partners/marks/raafat-elbaz.png" },
+  { name: "EL Kamash Group", image: "/images/partners/marks/el-kamash-group.png" },
+  { name: "Khaled Automobile", image: "/images/partners/marks/khaled-automobile.png" },
+  { name: "Nile Gate | Cairo", image: "/images/partners/marks/nile-gate-cairo.png" },
+  { name: "مطبخ سيلا", image: "/images/partners/marks/matbakh-sila.png" },
 ];
-
-function PartnerMark({ type }: { type: string }) {
-  const common = "h-8 w-8 shrink-0 text-current";
-
-  if (type === "diamond") {
-    return (
-      <svg className={common} viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M7 5h18l5 8-14 15L2 13l5-8Z" fill="currentColor" />
-        <path d="m7 5 4 8 5 15 5-15 4-8M2 13h28" stroke="#11111c" strokeOpacity=".42" strokeWidth="1.5" />
-      </svg>
-    );
-  }
-  if (type === "stack") {
-    return (
-      <svg className={common} viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="m16 2 13 7-13 7L3 9 16 2Z" fill="currentColor" />
-        <path d="m3 14 13 7 13-7M3 20l13 7 13-7" stroke="currentColor" strokeWidth="5" />
-        <path d="M16 2v14m0 5v6" stroke="#11111c" strokeOpacity=".4" strokeWidth="1.5" />
-      </svg>
-    );
-  }
-  if (type === "plant") {
-    return (
-      <svg className={common} viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M13 3h6v10h-6zM7 8h6v5H7zm12 0h6v5h-6z" fill="currentColor" />
-        <path d="M16 13v8m0-4c-7 0-10 2-10 6v5h20v-5c0-4-3-6-10-6Z" stroke="currentColor" strokeWidth="3" />
-      </svg>
-    );
-  }
-  if (type === "check") {
-    return (
-      <svg className={common} viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <circle cx="10" cy="8" r="6" fill="currentColor" />
-        <path d="m5 19 6 6 15-12" stroke="currentColor" strokeWidth="6" strokeLinecap="square" />
-      </svg>
-    );
-  }
-  if (type === "mountain") {
-    return (
-      <svg className={common} viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <circle cx="16" cy="16" r="15" fill="currentColor" />
-        <path d="M3 23 12 9l3 5 3-4 11 15H3Z" fill="#11111c" fillOpacity=".65" />
-        <path d="m4 22 6-4 4 2 5-6 9 9" stroke="#11111c" strokeOpacity=".5" strokeWidth="2" />
-      </svg>
-    );
-  }
-  return (
-    <svg className={common} viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <path d="m13 2 6 0 1 4 3 2 4-1 3 5-3 3v4l3 3-3 5-4-1-3 2-1 4h-6l-1-4-3-2-4 1-3-5 3-3v-4l-3-3 3-5 4 1 3-2 1-4Z" fill="currentColor" />
-      <circle cx="16" cy="16" r="5" fill="#11111c" fillOpacity=".65" />
-    </svg>
-  );
-}
 
 /** A responsive, self-contained recreation of the VBN+ landing-page hero. */
 export default function HeroSection({ dictionary, locale }: { dictionary: Dictionary; locale: Locale }) {
@@ -143,18 +90,25 @@ export default function HeroSection({ dictionary, locale }: { dictionary: Dictio
           <p className="mb-10 text-[14px] font-semibold tracking-[-.01em] text-white/80 sm:mb-12 sm:text-[16px]">
             {copy.trusted}
           </p>
-<div 
-  role="group" 
-  dir="ltr" 
-  className="relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] w-screen overflow-hidden" 
-  aria-label={copy.partnersLabel}
->            <div className="marquee-track flex w-max h-[70px] text-white/45 backdrop-blur-md bg-white/10">
+          <div
+            role="group"
+            dir="ltr"
+            className="relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] w-screen overflow-hidden"
+            aria-label={copy.partnersLabel}
+          >
+            <div className="marquee-track flex h-[70px] w-max items-center bg-white/10 text-white/45 backdrop-blur-md">
               {[0, 1, 2, 3].map((group) => (
                 <div key={group} aria-hidden={group > 0} className="flex shrink-0 items-center gap-10 pe-10 sm:gap-12 sm:pe-12">
                   {partners.map((partner) => (
                     <div key={`${group}-${partner.name}`} className="flex shrink-0 items-center gap-2 whitespace-nowrap">
-                      <PartnerMark type={partner.mark} />
-                      <span className={`${partner.name === "beehouse" ? "text-[24px] font-semibold" : "text-[18px] font-medium"} tracking-[-.03em]`}>{partner.name}</span>
+                      <Image
+                        src={partner.image}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="h-10 w-10 object-contain opacity-70 "
+                      />
+                      <span className="text-[18px] font-medium tracking-[-.03em] text-white/55">{partner.name}</span>
                     </div>
                   ))}
                 </div>

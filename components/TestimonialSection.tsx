@@ -5,7 +5,7 @@ import Image from "next/image";
 import AnimatedMetric from "./AnimatedMetric";
 import type { Dictionary, Locale } from "../lib/dictionaries";
 
-const resultValues = ["35+", "22+", "657+"];
+const resultValues = ["4+", "22+"];
 const portraits = [
   "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=240&h=240&q=85",
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&h=240&q=85",
@@ -84,7 +84,7 @@ export default function TestimonialSection({ dictionary, locale }: { dictionary:
 
           <div className="mt-auto w-full max-w-[740px] pt-12">
             <div className="h-px w-full bg-white/[0.12]" />
-            <dl className="mt-10 grid grid-cols-3">
+            <dl className="mt-10 grid grid-cols-2">
               {copy.metrics.map((label, index) => (
                 <div key={label} className={`px-2 sm:px-4 ${index > 0 ? "border-s border-white/[0.12]" : ""}`}>
                   <AnimatedMetric value={resultValues[index]} className="m-0 text-[38px] font-bold leading-none tracking-[0.01em] sm:text-[48px]" />

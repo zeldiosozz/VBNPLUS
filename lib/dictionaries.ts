@@ -17,7 +17,9 @@ export const dictionaries = {
     },
     who: {
       badge: "Who We Are", title: "Good marketing starts with", highlight: "a clear growth signal.", summary: "VBN+ brings strategy, creative, and performance into one focused team. We turn customer insight into campaigns you can understand, improve, and scale.",
-      videoLabel: "Play company introduction video",
+      videoLabel: "Play VBN+ marketing introduction video",
+      videoSrc: "/videos/marketing-intro-en.mp4",
+      videoPoster: "/images/marketing-intro-en-poster.png",
       metrics: ["Satisfied Customers", "Views Rate", "Contacted With"],
     },
     process: {
@@ -63,7 +65,7 @@ export const dictionaries = {
         { quote: "“We finally have a channel mix we can explain and improve. Cost per acquisition is down, and the pipeline is stronger.”", name: "Amir Rahman", role: "CEO, Meridian Group" },
         { quote: "“The team paired sharp creative with disciplined testing. We now make decisions from clear results instead of guesswork.”", name: "Sarah Chen", role: "Marketing Director, Brightline" },
       ],
-      metrics: ["Years Experience", "Award Winning", "Projects Done"],
+      metrics: ["Years Experience", "Projects Done"],
     },
     pricing: {
       badge: "Pricing Plan", title: "Flexible plans", highlight: "for your Growth", description: "Choose a plan that's right for you.", included: "What’s included", demo: "Book a Demo", details: "View plan details",
@@ -112,13 +114,15 @@ export const dictionaries = {
       logoLabel: "الصفحة الرئيسية لVBN+", bookDemo: "احجز عرضًا توضيحيًا", consultation: "احصل على استشارة مجانية",
       titleLead: "احنا بنبني براندات", titleHighlight: " مش", titleEnd: "مجرد اعلانات",
       description: "بنؤمن أن كل علامة تجارية تمتلك قصة فريدة تستحق أن تُروى باحترافية، نترجم أفكاركم إلى حملات تسويقية تخطف الأنظار، تحقق أعلى العوائد.",
-      trusted: "موثوقون لدى عشرات الشركاء حول العالم",
+      trusted: "موثوقون لدى عشرات الشركاء في جميع أنحاء الجمهورية",
       languageLabel: "تغيير اللغة",
       partnersLabel: "الشركات الشريكة",
     },
     who: {
       badge: "من نحن", title: "نبني حضورك في السوق،", highlight: "ونساعدك للوصول الى هدفك", summary: "في +VBN، بنساعد الشركات والبراندات تطوّر شغلها من خلال حلول تسويقية تجمع بين التخطيط، والإبداع، والتكنولوجيا.",
-      videoLabel: "تشغيل الفيديو التعريفي بالشركة",
+      videoLabel: "تشغيل الفيديو التعريفي بخدمات VBN+ التسويقية",
+      videoSrc: "/videos/marketing-intro-ar.mp4",
+      videoPoster: "/images/marketing-intro-ar-poster.png",
       metrics: ["عميل راضٍ", "نسبة مشاهدات", "تواصلنا مع"],
     },
     process: {
@@ -164,7 +168,7 @@ export const dictionaries = {
         { quote: "«أصبح لدينا مزيج قنوات واضح يمكن تطويره، وانخفضت تكلفة الاستحواذ وتحسّن مسار المبيعات.»", name: "أمير رحمن", role: "الرئيس التنفيذي، مجموعة ميريديان" },
         { quote: "«جمع الفريق بين الإبداع والاختبار المنهجي، وأصبحت قراراتنا مبنية على نتائج واضحة بدل التخمين.»", name: "سارة تشين", role: "مديرة التسويق، برايت لاين" },
       ],
-      metrics: ["سنوات من الخبرة", "جوائز وإنجازات", "مشروعًا منجزًا"],
+      metrics: ["سنوات من الخبرة", "إنجاز"],
     },
     pricing: {
       badge: "خطط الأسعار", title: "خطط مرنة", highlight: "لنمو أعمالك", description: "اختر الخطة المناسبة لك.", included: "ما الذي تتضمنه الخطة", demo: "احجز عرضًا توضيحيًا", details: "تفاصيل الخطة",

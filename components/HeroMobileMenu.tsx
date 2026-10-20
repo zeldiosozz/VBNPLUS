@@ -64,7 +64,7 @@ export default function HeroMobileMenu({
           id="mobile-primary-nav"
           aria-label={navLabel}
           data-open={open}
-          className="mobile-menu-panel fixed left-1/2 top-20 z-[60] max-h-[calc(100dvh-6rem)] w-[calc(100vw_-_2rem)] max-w-[420px] -translate-x-1/2 overflow-y-auto rounded-2xl border border-white/15 bg-[#11101e] p-2 shadow-[0_16px_48px_rgba(0,0,0,.45)] sm:top-24"
+          className="mobile-menu-panel fixed left-1/2 top-20 z-[60] max-h-[calc(100dvh-6rem)] w-[calc(100vw_-_2rem)] max-w-[420px] -translate-x-1/2 overflow-y-auto rounded-2xl border border-white/15 backdrop-blur-md bg-black/10 p-2 shadow-[0_16px_48px_rgba(0,0,0,.45)] sm:top-24"
         >
           <ul className="grid gap-1">
             {items.map((item) => (
@@ -82,9 +82,9 @@ export default function HeroMobileMenu({
           <a
             href="#demo"
             onClick={hideMenu}
-            className="mobile-menu-cta mt-2 block rounded-xl p-[1px] [background:linear-gradient(110deg,#ffe52d,#ff432e)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="mobile-menu-cta mt-2 block rounded-xl p-[1px] bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            <span className="flex min-h-11 items-center justify-center rounded-xl bg-[#080614] px-4 text-[14px] font-semibold text-white">
+            <span className="flex min-h-11 items-center justify-center rounded-xl bg-[#111111] px-4 text-[14px] font-semibold text-white">
               {demoLabel}
             </span>
           </a>

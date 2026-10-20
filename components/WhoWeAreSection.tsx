@@ -2,9 +2,7 @@ import React from "react";
 import AnimatedMetric from "./AnimatedMetric";
 import type { Dictionary } from "../lib/dictionaries";
 
-const metricValues = ["15+", "365M+", "2186+"];
-const sampleVideoUrl = "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4";
-const videoPosterUrl = "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=85";
+const metricValues = ["30+", "15M+", "600+"];
 
 /** About / proof section based on the supplied VBN+ design reference. */
 export default function WhoWeAreSection({ dictionary }: { dictionary: Dictionary }) {
@@ -35,9 +33,9 @@ export default function WhoWeAreSection({ dictionary }: { dictionary: Dictionary
               controls
               playsInline
               preload="metadata"
-              poster={videoPosterUrl}
+              poster={copy.videoPoster}
             >
-              <source src={sampleVideoUrl} type="video/mp4" />
+              <source src={copy.videoSrc} type="video/mp4" />
               Your browser does not support HTML video.
             </video>
           </div>
