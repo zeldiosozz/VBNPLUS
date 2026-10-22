@@ -25,8 +25,8 @@ export default async function LocalizedHomePage({
       <main>
         <div id="home"><HeroSection dictionary={dictionary} locale={locale} /></div>
         <div id="who-we-are"><WhoWeAreSection dictionary={dictionary} /></div>
-        <div id="process"><ProcessSection dictionary={dictionary} locale={locale} /></div>
-        <div id="services"><ServicesSection dictionary={dictionary} locale={locale} /></div>
+        <div id="process"><ProcessSection dictionary={dictionary} /></div>
+        <div id="services"><ServicesSection dictionary={dictionary} /></div>
         <div id="case-study"><CaseStudiesSection dictionary={dictionary} locale={locale} /></div>
         <div id="comparison"><ComparisonSection dictionary={dictionary} /></div>
         <div id="testimonial"><TestimonialSection dictionary={dictionary} locale={locale} /></div>

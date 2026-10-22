@@ -1,5 +1,5 @@
 import React from "react";
-import type { Dictionary, Locale } from "../lib/dictionaries";
+import type { Dictionary } from "../lib/dictionaries";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const serviceImages = [
@@ -7,10 +7,9 @@ const serviceImages = [
   "/images/Outlined TikTok icon.lottie",
   "/images/GoogleAds.lottie"
 ];
-const serviceSlugs = ["meta-ads", "tiktok-ads", "google-ads"];
 
 /** Image-led service cards for the VBN+ marketing page. */
-export default function ServicesSection({ dictionary, locale }: { dictionary: Dictionary; locale: Locale }) {
+export default function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
   const copy = dictionary.services;
   return (
     <section
@@ -31,11 +30,9 @@ export default function ServicesSection({ dictionary, locale }: { dictionary: Di
         <div className="mt-9 rounded-[20px] border border-white/[0.12] bg-transparent p-3 sm:mt-10 sm:p-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {copy.cards.map((service, index) => (
-              <a 
+              <article
                 key={service.name} 
-                href={`/${locale}/services/${serviceSlugs[index]}`} 
-                aria-label={`${service.name} — ${copy.learnMore}`} 
-                className=" relative isolate flex min-h-[430px] flex-col justify-end overflow-hidden rounded-[16px] backdrop-blur-md bg-white/10focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:min-h-[460px] lg:min-h-[488px]"
+                className="relative isolate flex min-h-[430px] flex-col justify-end overflow-hidden rounded-[16px] backdrop-blur-md bg-white/10 sm:min-h-[460px] lg:min-h-[488px]"
               >
                 {/* Lottie Animation as Background */}
 
@@ -66,12 +63,8 @@ export default function ServicesSection({ dictionary, locale }: { dictionary: Di
                   <p className="mt-4 max-w-[320px] text-[15px] leading-[1.72] text-white/95 sm:text-[16px]">
                     {service.description}
                   </p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-white/80">
-                    {copy.learnMore}{" "}
-                    <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
-                  </span>
                 </div>
-              </a>
+              </article>
             ))}
           </div>
         </div>

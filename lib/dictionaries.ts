@@ -18,13 +18,13 @@ export const dictionaries = {
     who: {
       badge: "Who We Are", title: "Good marketing starts with", highlight: "a clear growth signal.", summary: "VBN+ brings strategy, creative, and performance into one focused team. We turn customer insight into campaigns you can understand, improve, and scale.",
       videoLabel: "Play VBN+ marketing introduction video",
-      videoSrc: "/videos/marketing-intro-en.mp4",
+      videoSrc: "/videos/intro_VBNPLUS-2398.mp4",
       videoPoster: "/images/marketing-intro-en-poster.png",
       metrics: ["Satisfied Customers", "Views Rate", "Contacted With"],
     },
     process: {
       badge: "Our Process", title: "How We", highlight: "Build Campaigns",
-      description: "We follow a proven, collaborative process to develop and execute high-impact advertising campaigns that deliver measurable results.", learnMore: "Explore this step",
+      description: "We follow a proven, collaborative process to develop and execute high-impact advertising campaigns that deliver measurable results.",
       steps: [
         { title: "Funnel Performance Audit", description: "We analyze your sales funnel to identify opportunities for improvement and increased conversions." },
         { title: "Targeted Campaign Setup", description: "We create and launch targeted ad campaigns tailored to your specific business goals." },
@@ -32,7 +32,7 @@ export const dictionaries = {
       ],
     },
     services: {
-      badge: "Services", title: "Our", highlight: "Best Services", description: "Data-Driven Strategies for High-Impact Advertising", learnMore: "Explore service",
+      badge: "Services", title: "Our", highlight: "Best Services", description: "Data-Driven Strategies for High-Impact Advertising",
       menuTitle: "Choose the right channel for your growth", menuDescription: "Specialist campaigns across the platforms your customers use every day.", viewAll: "View all services",
       cards: [
         { name: "Meta Ads", description: "Our team has decades of combined experience creating winning Facebook & Instagram campaigns.", alt: "Person wearing a virtual reality headset" },
@@ -121,13 +121,13 @@ export const dictionaries = {
     who: {
       badge: "من نحن", title: "نبني حضورك في السوق،", highlight: "ونساعدك للوصول الى هدفك", summary: "في +VBN، بنساعد الشركات والبراندات تطوّر شغلها من خلال حلول تسويقية تجمع بين التخطيط، والإبداع، والتكنولوجيا.",
       videoLabel: "تشغيل الفيديو التعريفي بخدمات VBN+ التسويقية",
-      videoSrc: "/videos/marketing-intro-ar.mp4",
+      videoSrc: "/videos/intro_VBNPLUS-2398.mp4",
       videoPoster: "/images/marketing-intro-ar-poster.png",
       metrics: ["عميل راضٍ", "نسبة مشاهدات", "تواصلنا مع"],
     },
     process: {
       badge: "منهجيتنا", title: "كيف", highlight: "نبني الحملات",
-      description: "بنبدأ بفهم طبيعة مشروعك، والجمهور اللي بتستهدفه، والأهداف اللي عايز تحققها. ومن هنا بنحدد أنسب الحلول، سواء من خلال الحملات الإعلانية، أو صناعة المحتوى، أو بناء الهوية البصرية، أو تطوير موقعك وتحسين ظهوره على محركات البحث.", learnMore: "اكتشف هذه الخطوة",
+      description: "بنبدأ بفهم طبيعة مشروعك، والجمهور اللي بتستهدفه، والأهداف اللي عايز تحققها. ومن هنا بنحدد أنسب الحلول، سواء من خلال الحملات الإعلانية، أو صناعة المحتوى، أو بناء الهوية البصرية، أو تطوير موقعك وتحسين ظهوره على محركات البحث.",
       steps: [
         { title: "تدقيق أداء مسار المبيعات", description: "نحلل مسار مبيعاتك لاكتشاف فرص التحسين وزيادة التحويلات." },
         { title: "إعداد حملات موجّهة", description: "ننشئ حملات إعلانية موجّهة ونطلقها بما يتوافق مع أهداف نشاطك التجاري." },
@@ -135,7 +135,7 @@ export const dictionaries = {
       ],
     },
     services: {
-      badge: "الخدمات", title: "أفضل", highlight: "خدماتنا", description: "استراتيجيات قائمة على البيانات لإعلانات عالية التأثير", learnMore: "اكتشف الخدمة",
+      badge: "الخدمات", title: "أفضل", highlight: "خدماتنا", description: "استراتيجيات قائمة على البيانات لإعلانات عالية التأثير",
       menuTitle: "اختر القناة المناسبة لنمو أعمالك", menuDescription: "حملات متخصصة عبر المنصات التي يستخدمها عملاؤك يوميًا.", viewAll: "استكشف جميع الخدمات",
       cards: [
         { name: "إعلانات Meta", description: "يتمتع فريقنا بخبرة واسعة في إنشاء حملات ناجحة على Facebook وInstagram.", alt: "شخص يرتدي نظارة واقع افتراضي" },
@@ -147,11 +147,11 @@ export const dictionaries = {
       badge: "دراسات الحالة", title: "أحدث", highlight: "دراسات الحالة", description: "استراتيجيات قائمة على البيانات لإعلانات عالية التأثير",
       previous: "عرض دراسات الحالة السابقة", next: "عرض دراسات الحالة التالية", listLabel: "دراسات الحالة", controlsLabel: "أزرار التنقل بين دراسات الحالة", learnMore: "اقرأ دراسة الحالة",
       cards: [
-        { title: "تجديد الهوية التجارية", description: "ساعد التوجه البصري المتجدد العلامة التجارية على التميز في حملاتها الرقمية.", alt: "شاشة حاسوب تعرض فكرة تصميم" },
-        { title: "MacBook Pro M3", description: "وصلت حملة منتج مركزة بجيل جديد من الأدوات الإبداعية إلى الجمهور المناسب.", alt: "تصميم دعائي لحاسوب محمول" },
-        { title: "توسيع الوصول للحملات الخارجية", description: "وسعنا اكتساب العملاء عبر إعلانات خارجية بارزة في مواقع عالية الظهور.", alt: "لوحة إعلانية كبيرة في المدينة" },
-        { title: "خفض تكلفة الاكتساب 60٪", description: "ضاعفت استراتيجية PPC قائمة على البيانات وتحسينات التصميم عائد الاستثمار لمتجر إلكتروني خلال ثلاثة أشهر.", alt: "حاسوب محمول يعرض تصميم موقع" },
-        { title: "زيادة الاحتفاظ 45٪", description: "رفع مسار إعادة الاستهداف الاستراتيجي الاحتفاظ بالعملاء 45٪ وحسّن أداء الحملات.", alt: "حاسوب محمول من زاوية جانبية" },
+        { title: "أخطر القرارات", description: "قبل ما تاخد القرار، اتأكد إنك شايف الصورة كاملة.", alt: "شاشة حاسوب تعرض فكرة تصميم" },
+        { title: "الصفقة الحقيقية ؟!", description: "محتاج رؤية واضحة، ونموذج عمل بتثبت أرقامه إن مشروعك جاهز.", alt: "تصميم دعائي لحاسوب محمول" },
+        { title: "الكام منك بكام؟", description: "السوق مش هيقولك سعّر بكام، إنت اللي لازم تعرف.", alt: "لوحة إعلانية كبيرة في المدينة" },
+        { title: "حركة واحدة، تغير اللعبة كلها !!", description: "الضبط الدقيق للجمهور المستهدف، يضاعف نتائجك ويغير شكل أرقامك تماماً", alt: "حاسوب محمول يعرض تصميم موقع" },
+        { title: "يبق إنت بتسوّق لمين؟", description: "البراند القوي مش بس بيظهر قدام الناس ، البراند القوي بيخلي الناس تتكلم عنه", alt: "حاسوب محمول من زاوية جانبية" },
       ],
       date: "9 يناير 2025",
     },
@@ -164,9 +164,9 @@ export const dictionaries = {
     testimonial: {
       label: "عميل مميز", rating: "٥ من ٥ نجوم", slide: "الشهادة {current} من {total}", previous: "الشهادة السابقة", next: "الشهادة التالية", showReview: "عرض الشهادة {number}",
       reviews: [
-        { quote: "«ساعدنا VBN+ على توجيه الإنفاق إلى العملاء الأقرب للشراء، وزادت العملاء المحتملون المؤهلون ٣٨٪ خلال ربع سنة.»", name: "أوليفيا مارتينيز", role: "المؤسسة، نورث ستار ريتيل" },
-        { quote: "«أصبح لدينا مزيج قنوات واضح يمكن تطويره، وانخفضت تكلفة الاستحواذ وتحسّن مسار المبيعات.»", name: "أمير رحمن", role: "الرئيس التنفيذي، مجموعة ميريديان" },
-        { quote: "«جمع الفريق بين الإبداع والاختبار المنهجي، وأصبحت قراراتنا مبنية على نتائج واضحة بدل التخمين.»", name: "سارة تشين", role: "مديرة التسويق، برايت لاين" },
+        { quote: "قبل ما أتعامل مع +VBN كانت المبيعات فهبوط مستمر مش عارف أظهر جودة المنتج ولا أبين المميزات بأي شكل كويس، كنت فاكر أن المنتج هيتباع وخلاص و دي كانت مشكلة لفتره طويله لحد ما قررت أجيب حد يشوفلي حل و كانت الناس دي بجد ناس فاهمه هيّا بتعمل اي و ساعدوني جداً", name: "أ/ صفوت جلال", role: "مطبخ سيلا" },
+        { quote: "متخيلتش قد أي الناس دي شغلهم ممكن يفرق معايا فمستوى المبيعات بالشكل دا، ربنا يبارك فيهم", name:"أ/ رأفت الباز", role:"Raafat Elbaz for Export & Import" },
+        { quote: "مبسوط جداً بي تجربتي معاهم، كان عندي شكوك كتيرة خصوصاًً موضوع السعر ولكن أتعاملت معاهم و شفت أن الناس دي بتصرف أوي ع شغلها.", name:"أ/ أشرف السيد جمال", role:"Alsharaf Tours"}
       ],
       metrics: ["سنوات من الخبرة", "إنجاز"],
     },

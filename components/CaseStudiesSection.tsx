@@ -18,7 +18,7 @@ const caseImages = [
   // "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
   // "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=85",
 ];
-const caseSlugs = ["identity-refresh", "product-launch", "outdoor-reach", "lower-acquisition-cost", "retention-growth"];
+const caseStudyLink = "https://www.facebook.com/share/p/1C4rZEEid6/";
 
 function ArrowButton({ direction, onClick, label, locale }: { direction: "previous" | "next"; onClick: () => void; label: string; locale: Locale }) {
   const pointsLeft = direction === "previous";
@@ -86,7 +86,7 @@ export default function CaseStudiesSection({ dictionary, locale }: { dictionary:
             dir={locale === "ar" ? "rtl" : "ltr"}
           >
             {copy.cards.map((study, index) => (
-              <a href={`/${locale}/case-studies/${caseSlugs[index]}`} key={study.title} aria-label={`${study.title} — ${copy.learnMore}`} className="group block shrink-0 rounded-[18px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              <a href={caseStudyLink} key={study.title} aria-label={`${study.title} — ${copy.learnMore}`} className="group block shrink-0 rounded-[18px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                 <article
                   className="w-[min(82vw,560px)] snap-start overflow-hidden rounded-[18px] border border-white/[0.1] bg-[#111111] transition duration-300 group-hover:border-white/30 lg:w-[clamp(300px,29.2vw,550px)]"
                 >

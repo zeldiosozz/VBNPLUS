@@ -7,9 +7,12 @@ import type { Dictionary, Locale } from "../lib/dictionaries";
 
 const resultValues = ["4+", "22+"];
 const portraits = [
-  "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=240&h=240&q=85",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&h=240&q=85",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&h=240&q=85",
+
+  "/images/partners/raafat.jpg",
+
+  "/images/partners/safwat.png",
+      "/images/partners/sharaf.jpg",
+
 ];
 
 function CarouselArrow({ direction, label, onClick, isRtl }: { direction: "previous" | "next"; label: string; onClick: () => void; isRtl: boolean }) {

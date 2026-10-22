@@ -1,10 +1,9 @@
 import React from "react";
-import type { Dictionary, Locale } from "../lib/dictionaries";
+import type { Dictionary } from "../lib/dictionaries";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const stepIcons = ["analyze", "Search for value", "Money"];
 // const stepIcons = ["puzzle", "gear", "trophy"];
-const stepSlugs = ["audit", "launch", "optimize"];
 
 // function ProcessIcon({ type }: { type: string }) {
 //   const gradientId = `process-${type}-gradient`;
@@ -71,7 +70,7 @@ function ProccessIconn({type}:{type:string}){
 }
 
 /** Three-step process section, designed to sit between other page sections. */
-export default function ProcessSection({ dictionary, locale }: { dictionary: Dictionary; locale: Locale }) {
+export default function ProcessSection({ dictionary }: { dictionary: Dictionary }) {
   const copy = dictionary.process;
   return (
     <section
@@ -93,9 +92,9 @@ export default function ProcessSection({ dictionary, locale }: { dictionary: Dic
 
         <div className="mt-9 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {copy.steps.map((step, index) => (
-            <a href={`/${locale}/process/${stepSlugs[index]}`} key={step.title} aria-label={`${step.title} — ${copy.learnMore}`} className="group block rounded-[13px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
             <article
-              className="flex min-h-[330px] flex-col rounded-[13px] border border-white/[0.12] backdrop-blur-md bg-black/10 p-6 transition duration-300 group-hover:-translate-y-1 group-hover:border-white/30 sm:min-h-[344px] sm:p-6"
+              key={step.title}
+              className="flex min-h-[330px] flex-col rounded-[13px] border border-white/[0.12] backdrop-blur-md bg-black/10 p-6 sm:min-h-[344px] sm:p-6"
             >
               <ProccessIconn type={stepIcons[index]} 
               />
@@ -105,9 +104,7 @@ export default function ProcessSection({ dictionary, locale }: { dictionary: Dic
               <p className="mt-4 text-[15px] leading-[1.72] text-white/95 sm:text-[16px]">
                 {step.description}
               </p>
-              <span className="mt-auto inline-flex items-center gap-2 pt-5 text-[14px] font-semibold text-white/70">{copy.learnMore} <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span></span>
             </article>
-            </a>
           ))}
         </div>
       </div>
