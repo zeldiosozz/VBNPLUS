@@ -216,7 +216,7 @@ html[dir="rtl"] body {
 
 section[id],
 div[id] {
-  scroll-margin-top: 1rem;
+  scroll-margin-top: 6rem;
 }
 
 .case-studies-track {

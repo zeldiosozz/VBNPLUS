@@ -1,7 +1,9 @@
 import "./globals.css";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
+import { WHATSAPP_PHONE_NUMBER } from "@/lib/contact";
 import SiteWavesBackground from "../components/SiteWavesBackground";
+import WhatsAppBubble from "../components/WhatsAppBubble";
 
 const vbnSans = localFont({
   src: [
@@ -28,6 +30,7 @@ export default function RootLayout({
         <SiteWavesBackground />
         <div className="site-content relative z-10 min-h-screen">
           {children}
+          <WhatsAppBubble phoneNumber={WHATSAPP_PHONE_NUMBER} />
         </div>
       </body>
     </html>

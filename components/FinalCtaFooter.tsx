@@ -1,12 +1,13 @@
 import React from "react";
 import type { Dictionary } from "../lib/dictionaries";
 import Image from "next/image";
-function SocialLink({ name, children }: { name: string; children: React.ReactNode }) {
+function SocialLink({ name, children, link }: { name: string; link: string, children: React.ReactNode }) {
   return (
     <a
-      href="#"
+      href={link}
+      target="_blank"
       aria-label={name}
-      className="grid h-10 w-10 place-items-center rounded-full border border-white/[0.12] bg-white/[0.035] text-white/55 transition-colors hover:text-white"
+      className="grid h-10 w-30 place-items-center rounded-lg border border-white/[0.12] bg-white/[0.035] text-white/55 transition-colors hover:text-white"
     >
       {children}
     </a>
@@ -57,24 +58,24 @@ export default function FinalCtaFooter({ dictionary }: { dictionary: Dictionary 
           </nav>
 
           <div className="mt-8 flex gap-2">
-            <SocialLink name={copy.social[0]}>
+            {/* <SocialLink name={copy.social[0]}>
               <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" aria-hidden="true">
                 <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="2" />
                 <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
                 <circle cx="17.7" cy="6.7" r="1.1" fill="currentColor" />
               </svg>
-            </SocialLink>
-            <SocialLink name={copy.social[1]}><span className="text-[20px] font-bold leading-none">f</span></SocialLink>
-            <SocialLink name={copy.social[2]}>
+            </SocialLink> */}
+            <SocialLink name={copy.social[1]} link="https://www.facebook.com/profile.php?id=61594463512245"><span className="text-[20px] font-bold leading-none"></span></SocialLink>
+            {/* <SocialLink name={copy.social[2]}>
               <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" aria-hidden="true">
                 <path d="M21 6.1a7.2 7.2 0 0 1-2.1.6 3.6 3.6 0 0 0 1.6-2 7.1 7.1 0 0 1-2.3.9 3.6 3.6 0 0 0-6.2 3.3 10.2 10.2 0 0 1-7.4-3.8 3.6 3.6 0 0 0 1.1 4.8 3.5 3.5 0 0 1-1.6-.4v.1a3.6 3.6 0 0 0 2.9 3.5 3.7 3.7 0 0 1-1.6.1 3.6 3.6 0 0 0 3.4 2.5A7.2 7.2 0 0 1 3.5 17a10.1 10.1 0 0 0 5.5 1.6c6.6 0 10.2-5.5 10.2-10.2v-.5A7.3 7.3 0 0 0 21 6.1Z" />
               </svg>
-            </SocialLink>
-            <SocialLink name={copy.social[3]}>
+            </SocialLink> */}
+            {/* <SocialLink name={copy.social[3]}>
               <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" fill="currentColor" aria-hidden="true">
                 <path d="M5.2 8.5H2.4V21h2.8V8.5ZM3.8 3a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM21.6 13.8c0-3.8-2-5.6-4.7-5.6a4.1 4.1 0 0 0-3.7 2V8.5h-2.8V21h2.8v-6.2c0-1.6.3-3.2 2.3-3.2s2 1.9 2 3.3V21h2.9l1.2-7.2Z" />
               </svg>
-            </SocialLink>
+            </SocialLink> */}
           </div>
         </div>
 

@@ -19,48 +19,52 @@ export default function HeroSection({ dictionary, locale }: { dictionary: Dictio
   const copy = dictionary.hero;
   return (
     <section
-      className="relative isolate flex min-h-[780px] flex-col overflow-hidden bg-transparent text-white sm:min-h-[820px]"
+      className="relative flex min-h-[780px] flex-col bg-transparent text-white sm:min-h-[820px]"
       aria-labelledby="hero-title"
     >
-      <header className="relative z-20 mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center px-6 pt-7 sm:px-10 lg:grid-cols-[1fr_auto_1fr] lg:px-0">
-        <a href="#home" className="flex w-fit items-center gap-3 lg:col-start-1 lg:row-start-1" aria-label="VBN+ home">
-          <Image src="/images/vbn-logo.png" alt="VBN+" width={240} height={80} className="navbar-logo h-auto w-[120px]" />
-        </a>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 backdrop-blur-md bg-black/40">
+        <div className="mx-auto grid h-20 w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center px-6 sm:px-10 lg:grid-cols-[1fr_auto_1fr] lg:px-0">
+          <a href="#home" className="flex w-fit items-center gap-3 lg:col-start-1 lg:row-start-1" aria-label="VBN+ home">
+            <Image src="/images/vbn-logo.png" alt="VBN+" width={240} height={80} className="navbar-logo h-auto w-[120px]" />
+          </a>
 
-        <HeroDesktopNavigation
-          navLabel={copy.navLabel}
-          links={[
-            { href: "#home", label: copy.home },
-            { href: "#process", label: copy.process },
-            { href: "#case-study", label: copy.caseStudies },
-            { href: "#pricing", label: copy.pricing },
-          ]}
-          servicesLabel={copy.services}
-        />
-
-        <div className="col-start-2 row-start-1 flex items-center justify-self-end gap-2 lg:col-start-3">
-          <HeroMobileMenu
+          <HeroDesktopNavigation
             navLabel={copy.navLabel}
-            menuLabel={locale === "ar" ? "فتح القائمة" : "Open menu"}
-            closeLabel={locale === "ar" ? "إغلاق القائمة" : "Close menu"}
-            demoLabel={copy.bookDemo}
-            items={[
+            links={[
               { href: "#home", label: copy.home },
               { href: "#process", label: copy.process },
-              { href: "#services", label: copy.services },
               { href: "#case-study", label: copy.caseStudies },
               { href: "#pricing", label: copy.pricing },
             ]}
+            servicesLabel={copy.services}
           />
-          <LanguageSwitcher locale={locale} label={copy.languageLabel} />
-          <a
-            href="#demo"
-            className="hidden rounded-[2px] p-[1px] border-white border-[1px] lg:block"
-          >
-            <span className="block rounded-[2px] bg-[#111111] px-4 py-[13px] text-[14px] sm:px-5 sm:text-[16px]">{copy.bookDemo}</span>
-          </a>
+
+          <div className="col-start-2 row-start-1 flex items-center justify-self-end gap-2 lg:col-start-3">
+            <HeroMobileMenu
+              navLabel={copy.navLabel}
+              menuLabel={locale === "ar" ? "فتح القائمة" : "Open menu"}
+              closeLabel={locale === "ar" ? "إغلاق القائمة" : "Close menu"}
+              demoLabel={copy.bookDemo}
+              items={[
+                { href: "#home", label: copy.home },
+                { href: "#process", label: copy.process },
+                { href: "#services", label: copy.services },
+                { href: "#case-study", label: copy.caseStudies },
+                { href: "#pricing", label: copy.pricing },
+              ]}
+            />
+            <LanguageSwitcher locale={locale} label={copy.languageLabel} />
+            <a
+              href="#pricing"
+              className="hidden p-[1px] lg:block"
+            >
+              <span className="block rounded-md border-white border-[1px] bg-[#111111] px-4 py-[13px] text-[14px] sm:px-5 sm:text-[16px]">{copy.bookDemo}</span>
+            </a>
+          </div>
         </div>
       </header>
+
+      <div aria-hidden="true" className="h-20 shrink-0" />
 
       <div className="relative z-10 mx-auto flex w-full flex-1 flex-col items-center px-5 pt-20 text-center sm:pt-28 lg:pt-[116px]">
         <h1 id="hero-title" className="max-w-[1000px] text-[clamp(2.65rem,5.1vw,4.5rem)] font-bold leading-[1.08] tracking-[-0.035em]">
