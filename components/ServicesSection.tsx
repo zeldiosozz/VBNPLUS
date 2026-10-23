@@ -1,6 +1,5 @@
-import React from "react";
 import type { Dictionary } from "../lib/dictionaries";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import LazyDotLottie from "./LazyDotLottie";
 
 const serviceImages = [
   "/images/facebookicon.lottie",
@@ -34,19 +33,12 @@ export default function ServicesSection({ dictionary }: { dictionary: Dictionary
                 key={service.name} 
                 className="relative isolate flex min-h-[430px] flex-col justify-end overflow-hidden rounded-[16px] backdrop-blur-md bg-white/10 sm:min-h-[460px] lg:min-h-[488px]"
               >
-                {/* Lottie Animation as Background */}
-
-                {/* <div className="absolute w-full h-full inset-0 pointer-events-none transition-transform duration-500 group-hover:scale-[1.03]"> */}
                 <div className="flex">
-                                                                   <DotLottieReact
+                  <LazyDotLottie
                     src={serviceImages[index]}
-                    autoplay
-                    loop
                     className="h-full w-full object-cover"
                   />
-
                 </div>
-               {/* </div> */}
 
                 {/* Dark Overlay Gradient for Text Contrast */}
 

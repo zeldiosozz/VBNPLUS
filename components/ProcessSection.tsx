@@ -1,6 +1,5 @@
-import React from "react";
 import type { Dictionary } from "../lib/dictionaries";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import LazyDotLottie from "./LazyDotLottie";
 
 const stepIcons = ["analyze", "Search for value", "Money"];
 // const stepIcons = ["puzzle", "gear", "trophy"];
@@ -57,16 +56,7 @@ const stepIcons = ["analyze", "Search for value", "Money"];
 //   );
 // }
 function ProccessIconn({type}:{type:string}){
-  const gradientId = `process-${type}-gradient`;
-  return (
-
-        <DotLottieReact
-     src={`/images/${type}.lottie`} 
-      loop
-      autoplay
-     
-    />  
-  )
+  return <LazyDotLottie src={`/images/${type}.lottie`} />;
 }
 
 /** Three-step process section, designed to sit between other page sections. */

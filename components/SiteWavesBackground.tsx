@@ -79,8 +79,8 @@ export default function SiteWavesBackground({
 
         effect = window.VANTA.WAVES({
           el: hostRef.current,
-          mouseControls: true,
-          touchControls: true,
+          mouseControls: false,
+          touchControls: false,
           gyroControls: false,
           minHeight: 200,
           minWidth: 200,
