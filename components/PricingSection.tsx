@@ -20,12 +20,21 @@ function CheckIcon() {
 /** Three pricing options shown in the supplied design. */
 export default function PricingSection({ dictionary, locale }: { dictionary: Dictionary; locale: Locale }) {
   const copy = dictionary.pricing;
-  const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | null>(null);
+  const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | "consultation" | null>(null);
   const [bookingStatus, setBookingStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const selectedPlan = selectedPlanIndex === null ? null : copy.plans[selectedPlanIndex];
+  const selectedPlan = typeof selectedPlanIndex === "number" ? copy.plans[selectedPlanIndex] : null;
+
+  useEffect(() => {
+    const openConsultation = () => {
+      setBookingStatus("");
+      setSelectedPlanIndex("consultation");
+    };
+    window.addEventListener("vbn-open-consultation", openConsultation);
+    return () => window.removeEventListener("vbn-open-consultation", openConsultation);
+  }, []);
 
   useEffect(() => {
     if (selectedPlanIndex === null) return;
@@ -75,7 +84,7 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
 
   const submitBooking = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (selectedPlanIndex === null || !selectedPlan) return;
+    if (selectedPlanIndex === null) return;
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -87,7 +96,7 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          packageType: ["silver", "bronze", "gold"][selectedPlanIndex],
+          packageType: selectedPlanIndex === "consultation" ? "consultation" : ["silver", "bronze", "gold"][selectedPlanIndex],
           locale,
           firstName: formData.get("firstName"),
           lastName: formData.get("lastName"),
@@ -100,9 +109,10 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
         }),
       });
 
-      if (!response.ok) throw new Error("Demo request submission failed.");
+      const result = await response.json() as { notification?: string; error?: string };
+      if (!response.ok) throw new Error(result.error || "Demo request submission failed.");
 
-      setBookingStatus(copy.bookingSuccess);
+      setBookingStatus(result.notification === "failed" ? copy.bookingEmailFailed : copy.bookingSuccess);
       form.reset();
     } catch {
       setBookingStatus(copy.bookingError);
@@ -191,7 +201,7 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
         </div>
       </div>
     </section>
-    {selectedPlan && (
+    {selectedPlanIndex !== null && (
       <div
         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
         onMouseDown={(event) => {
@@ -209,8 +219,8 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
         >
           <div className="flex items-start justify-between gap-5">
             <div>
-              <h2 id="booking-title" className="text-2xl font-bold">{copy.bookingTitle}</h2>
-              <p id="booking-description" className="mt-2 text-sm leading-6 text-white/65">{copy.bookingDescription}</p>
+              <h2 id="booking-title" className="text-2xl font-bold">{selectedPlanIndex === "consultation" ? copy.consultationBookingTitle : copy.bookingTitle}</h2>
+              <p id="booking-description" className="mt-2 text-sm leading-6 text-white/65">{selectedPlanIndex === "consultation" ? copy.consultationDescription : copy.bookingDescription}</p>
             </div>
             <button type="button" onClick={closeBooking} className="grid size-9 shrink-0 place-items-center rounded-full border border-white/15 text-xl text-white/70 transition hover:bg-white/10 hover:text-white" aria-label={copy.cancelBooking}>
               <span aria-hidden="true">×</span>
@@ -218,14 +228,16 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
           </div>
 
           <div className="mt-6 rounded-xl border border-[#e8bd45]/40 bg-[#e8bd45]/10 p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#f3d77c]">{copy.selectedPackage}</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-[#f3d77c]">{copy.selectedPackage}</p>
             <div className="mt-1 flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="text-lg font-semibold">{selectedPlan.name}</h3>
-              <p className="text-lg"><bdi dir="ltr">{selectedPlan.price}</bdi>{selectedPlan.cadence && <span className="ms-1 text-sm text-white/60">{selectedPlan.cadence}</span>}</p>
+              <h3 className="text-lg font-semibold">{selectedPlan?.name ?? copy.consultationPackage}</h3>
+              {selectedPlan && <p className="text-lg"><bdi dir="ltr">{selectedPlan.price}</bdi>{selectedPlan.cadence && <span className="ms-1 text-sm text-white/60">{selectedPlan.cadence}</span>}</p>}
             </div>
-            <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-white/75">
-              {selectedPlan.features.map((feature) => <li key={feature}>{feature}</li>)}
-            </ul>
+            {selectedPlan ? (
+              <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-white/75">
+                {selectedPlan.features.map((feature) => <li key={feature}>{feature}</li>)}
+              </ul>
+            ) : <p className="mt-2 text-sm leading-6 text-white/75">{copy.consultationDescription}</p>}
           </div>
 
           <form className="mt-6 grid gap-4" onSubmit={submitBooking}>
@@ -263,7 +275,7 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
               {copy.messageLabel}
               <textarea name="message" rows={3} className="resize-y rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 outline-none transition placeholder:text-white/40 focus:border-[#e8bd45] focus:ring-2 focus:ring-[#e8bd45]/25" />
             </label>
-            <p className="text-xs leading-5 text-white/55">{copy.submissionNotice}</p>
+            <p className="text-xs leading-5 text-white/55">{selectedPlanIndex === "consultation" ? copy.consultationSubmissionNotice : copy.submissionNotice}</p>
             {bookingStatus && <p role="status" className="text-sm leading-6 text-[#f3d77c]">{bookingStatus}</p>}
             <div className="mt-1 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
               <button type="button" onClick={closeBooking} className="rounded-lg border border-white/20 px-5 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/10">{copy.cancelBooking}</button>

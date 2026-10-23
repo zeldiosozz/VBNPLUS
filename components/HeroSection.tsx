@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import LanguageSwitcher from "../components/LanguageSwitcher";
@@ -82,9 +84,12 @@ export default function HeroSection({ dictionary, locale }: { dictionary: Dictio
         </p>
 
         <div className="mt-20 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-          <a href="#consultation" className="theme-component theme-button rounded-[9px] px-5 py-[15px] text-[14px] font-semibold sm:text-[16px]">
+          {/* <a href="#consultation" className="theme-component theme-button rounded-[9px] px-5 py-[15px] text-[14px] font-semibold sm:text-[16px]">
             {copy.consultation}
-          </a>
+          </a> */}
+              <button type="button" onClick={() => window.dispatchEvent(new Event("vbn-open-consultation"))} className="theme-component theme-button mt-10 rounded-[9px] px-5 py-[15px] text-[14px] font-semibold sm:text-[16px]">
+              {copy.consultation}
+            </button>
           {/* <a href="#demo" className="rounded-[9px] p-[1px] [background:#ffffff]">
             <span className="block rounded-[8px] bg-[#181818] px-5 py-[14px] text-[14px] sm:text-[16px]">{copy.bookDemo}</span>
           </a> */}

@@ -1,10 +1,12 @@
-import React from "react";
-import type { Dictionary } from "../lib/dictionaries";
+"use client";
+
+import React, { useState } from "react";
+import type { Dictionary, Locale } from "../lib/dictionaries";
 import Image from "next/image";
 function SocialLink({ name, children, link }: { name: string; link: string, children: React.ReactNode }) {
   return (
     <a
-      href={link}
+      // href={link}
       target="_blank"
       aria-label={name}
       className="grid h-10 w-30 place-items-center rounded-lg border border-white/[0.12] bg-white/[0.035] text-white/55 transition-colors hover:text-white"
@@ -15,9 +17,40 @@ function SocialLink({ name, children, link }: { name: string; link: string, chil
 }
 
 /** Final conversion panel and footer from the supplied landing-page reference. */
-export default function FinalCtaFooter({ dictionary }: { dictionary: Dictionary }) {
+export default function FinalCtaFooter({ dictionary, locale }: { dictionary: Dictionary; locale: Locale }) {
   const copy = dictionary.footer;
   const footerTargets = ["home", "process", "services", "case-study", "pricing"];
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
+  const [newsletterStatus, setNewsletterStatus] = useState<{ message: string; error: boolean } | null>(null);
+
+  async function handleNewsletterSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (newsletterSubmitting) return;
+    const formData = new FormData(event.currentTarget);
+    setNewsletterSubmitting(true);
+    setNewsletterStatus(null);
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: newsletterEmail,
+          locale,
+          website: String(formData.get("website") ?? ""),
+        }),
+      });
+      if (!response.ok) throw new Error("Newsletter subscription failed.");
+      setNewsletterEmail("");
+      setNewsletterStatus({ message: copy.newsletterSuccess, error: false });
+    } catch {
+      setNewsletterStatus({ message: copy.newsletterError, error: true });
+    } finally {
+      setNewsletterSubmitting(false);
+    }
+  }
+
   return (
     <div
       className="relative isolate overflow-hidden bg-transparent text-white"
@@ -32,9 +65,9 @@ export default function FinalCtaFooter({ dictionary }: { dictionary: Dictionary 
             <p className="mx-auto mt-5 max-w-[540px] text-[15px] leading-[1.7] text-white/95 sm:text-[16px]">
               {copy.description}
             </p>
-            <a href="#consultation" className="theme-component theme-button mt-10 rounded-[9px] px-5 py-[15px] text-[14px] font-semibold sm:text-[16px]">
+            <button type="button" onClick={() => window.dispatchEvent(new Event("vbn-open-consultation"))} className="theme-component theme-button mt-10 rounded-[9px] px-5 py-[15px] text-[14px] font-semibold sm:text-[16px]">
               {copy.consultation}
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -65,7 +98,7 @@ export default function FinalCtaFooter({ dictionary }: { dictionary: Dictionary 
                 <circle cx="17.7" cy="6.7" r="1.1" fill="currentColor" />
               </svg>
             </SocialLink> */}
-            <SocialLink name={copy.social[1]} link="https://www.facebook.com/profile.php?id=61594463512245"><span className="text-[20px] font-bold leading-none"></span></SocialLink>
+            <SocialLink name={copy.social[1]} link="https://www.facebook.com/profile.php?id=61594463512245"><span className="text-[20px] font-bold leading-none">facebook</span></SocialLink>
             {/* <SocialLink name={copy.social[2]}>
               <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" aria-hidden="true">
                 <path d="M21 6.1a7.2 7.2 0 0 1-2.1.6 3.6 3.6 0 0 0 1.6-2 7.1 7.1 0 0 1-2.3.9 3.6 3.6 0 0 0-6.2 3.3 10.2 10.2 0 0 1-7.4-3.8 3.6 3.6 0 0 0 1.1 4.8 3.5 3.5 0 0 1-1.6-.4v.1a3.6 3.6 0 0 0 2.9 3.5 3.7 3.7 0 0 1-1.6.1 3.6 3.6 0 0 0 3.4 2.5A7.2 7.2 0 0 1 3.5 17a10.1 10.1 0 0 0 5.5 1.6c6.6 0 10.2-5.5 10.2-10.2v-.5A7.3 7.3 0 0 0 21 6.1Z" />
@@ -81,19 +114,32 @@ export default function FinalCtaFooter({ dictionary }: { dictionary: Dictionary 
 
         <div>
           <p className="text-[15px] leading-6">{copy.newsletter}</p>
-          <div role="group" aria-label={copy.newsletterLabel} className="mt-4 flex gap-3">
+          <form onSubmit={handleNewsletterSubmit} aria-label={copy.newsletterLabel} className="mt-4 flex gap-3">
             <label htmlFor="newsletter-email" className="sr-only">{copy.email}</label>
             <input
               id="newsletter-email"
               type="email"
+              name="email"
               placeholder={copy.email}
               dir="ltr"
+              autoComplete="email"
+              required
+              maxLength={254}
+              value={newsletterEmail}
+              onChange={(event) => setNewsletterEmail(event.target.value)}
+              disabled={newsletterSubmitting}
               className="newsletter-email h-12 min-h-12 min-w-0 flex-1 rounded-[7px] border border-transparent px-4 text-[15px] outline-none"
             />
-            <button type="button" className="theme-component theme-button h-12 shrink-0 rounded-[8px] px-5 text-[15px] font-medium">
-              {copy.submit}
+            <input name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+            <button type="submit" disabled={newsletterSubmitting} className="theme-component theme-button h-12 shrink-0 rounded-[8px] px-5 text-[15px] font-medium disabled:cursor-wait disabled:opacity-70">
+              {newsletterSubmitting ? copy.newsletterSubmitting : copy.submit}
             </button>
-          </div>
+          </form>
+          {newsletterStatus && (
+            <p role="status" aria-live="polite" className={`mt-3 text-[13px] ${newsletterStatus.error ? "text-red-300" : "text-green-300"}`}>
+              {newsletterStatus.message}
+            </p>
+          )}
           <p className="mt-4 max-w-[415px] text-[13px] leading-[1.6] text-white/55">
             {copy.consent} <a className="underline underline-offset-2" href="#privacy-policy">{copy.privacy}</a> {copy.andUpdates}
           </p>

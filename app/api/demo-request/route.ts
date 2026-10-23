@@ -1,7 +1,8 @@
 import { z } from "zod";
+import { saveDemoRequest } from "@/lib/demo-requests-db";
 
 const demoRequestSchema = z.object({
-  packageType: z.enum(["silver", "bronze", "gold"]),
+  packageType: z.enum(["silver", "bronze", "gold", "consultation"]),
   locale: z.enum(["en", "ar"]),
   firstName: z.string().trim().min(1).max(80),
   lastName: z.string().trim().min(1).max(80),
@@ -17,6 +18,7 @@ const packages = {
   silver: { en: "Silver", ar: "الفضية", price: "25K EGP/month" },
   bronze: { en: "Bronze", ar: "البرونزية", price: "32K EGP/month" },
   gold: { en: "Gold", ar: "الذهبية", price: "42K EGP/month" },
+  consultation: { en: "Free consultation", ar: "استشارة مجانية", price: "To be discussed" },
 } as const;
 
 export async function POST(request: Request) {
@@ -44,18 +46,39 @@ export async function POST(request: Request) {
   // Silently accept bot submissions caught by the hidden form field.
   if (parsed.data.website) return Response.json({ ok: true });
 
+  const { packageType, locale, firstName, lastName, email, phoneNumber, businessType, address, message } = parsed.data;
+  const selectedPackage = packages[packageType];
+  const packageName = selectedPackage[locale];
+
+  try {
+    const lead = await saveDemoRequest({
+      package_type: packageType,
+      source: packageType === "consultation" ? "consultation" : "website",
+      locale,
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      phone_number: phoneNumber,
+      business_type: businessType,
+      address,
+      message,
+    });
+    if (!lead) return Response.json({ error: "We could not save your request. Please try again." }, { status: 503 });
+  } catch {
+    return Response.json({ error: "We could not save your request. Please try again." }, { status: 503 });
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   const recipient = process.env.DEMO_REQUEST_TO;
   const sender = process.env.DEMO_REQUEST_FROM;
   if (!apiKey || !recipient || !sender) {
-    console.error("Demo request email is not configured.");
-    return Response.json({ error: "Request delivery is not configured." }, { status: 503 });
+    console.info("Demo request saved to CRM; email notification is not configured.");
+    return Response.json({ ok: true, notification: "failed" });
   }
 
-  const { packageType, locale, firstName, lastName, email, phoneNumber, businessType, address, message } = parsed.data;
-  const selectedPackage = packages[packageType];
-  const packageName = selectedPackage[locale];
-  const subject = `Demo request: ${selectedPackage.en} package`;
+  const subject = packageType === "consultation"
+    ? "Free consultation request"
+    : `Demo request: ${selectedPackage.en} package`;
   const text = [
     `Package: ${packageName}`,
     `Price: ${selectedPackage.price}`,
@@ -88,13 +111,13 @@ export async function POST(request: Request) {
     });
 
     if (!emailResponse.ok) {
-      console.error(`Demo request email provider returned ${emailResponse.status}.`);
-      return Response.json({ error: "Request delivery failed." }, { status: 502 });
+      console.error(`Demo request was saved, but email provider returned ${emailResponse.status}.`);
+      return Response.json({ ok: true, notification: "failed" });
     }
 
     return Response.json({ ok: true });
   } catch (error) {
-    console.error("Demo request email delivery failed.", error);
-    return Response.json({ error: "Request delivery failed." }, { status: 502 });
+    console.error("Demo request was saved, but email delivery failed.", error);
+    return Response.json({ ok: true, notification: "failed" });
   }
 }

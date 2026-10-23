@@ -8,7 +8,7 @@ export const dictionaries = {
     hero: {
       navLabel: "Main navigation",
       home: "Home", process: "Process", services: "Services", caseStudies: "Case Study", pricing: "Pricing",
-      logoLabel: "VBN+ home", bookDemo: "Book a Demo", consultation: "Get a Free Consultation",
+      logoLabel: "VBN+ home", bookDemo: "Book Now", consultation: "Get a Free Consultation",
       titleLead: "Powerful", titleHighlight: "Ads Campaigns", titleEnd: "That Drive Results",
       description: "VBN+ helps businesses grow with data-driven strategies and high-converting campaigns.",
       trusted: "Trusted by more than 500+ business partners worldwide",
@@ -68,8 +68,8 @@ export const dictionaries = {
       metrics: ["Years Experience", "Projects Done"],
     },
     pricing: {
-      badge: "Pricing Plans", title: "Flexible plans", highlight: "for your business growth", description: "Choose the plan that suits you.", included: "What’s included", demo: "Book a Demo", details: "Plan details",
-      bookingTitle: "Book a Demo", bookingDescription: "Tell us how to reach you, and we’ll prepare a consultation for this package.", selectedPackage: "Selected package", priceLabel: "Package price", firstNameLabel: "First name", lastNameLabel: "Last name", emailLabel: "Email address", phoneLabel: "Phone number", businessTypeLabel: "Business type or industry", addressLabel: "Business address", messageLabel: "Anything else we should know?", submitBooking: "Submit request", submittingBooking: "Sending…", cancelBooking: "Cancel", submissionNotice: "We’ll use these details to contact you about your selected package.", bookingSuccess: "Your request has been sent. We’ll contact you soon.", bookingError: "We couldn’t send your request. Please try again.",
+      badge: "Pricing Plans", title: "Flexible plans", highlight: "for your business growth", description: "Choose the plan that suits you.", included: "What’s included", demo: "Book Now", details: "Plan details",
+      bookingTitle: "Book Now", bookingDescription: "Tell us how to reach you, and we’ll prepare a consultation for this package.", consultationBookingTitle: "Get a free consultation", consultationPackage: "Free consultation", consultationDescription: "Tell us about your business and we’ll discuss the right next steps.", consultationSubmissionNotice: "We’ll use these details to contact you about your free consultation.", selectedPackage: "Selected package", priceLabel: "Package price", firstNameLabel: "First name", lastNameLabel: "Last name", emailLabel: "Email address", phoneLabel: "Phone number", businessTypeLabel: "Business type or industry", addressLabel: "Business address", messageLabel: "Anything else we should know?", submitBooking: "Submit request", submittingBooking: "Sending…", cancelBooking: "Cancel", submissionNotice: "We’ll use these details to contact you about your selected package.", bookingSuccess: "Your request has been sent. We’ll contact you soon.", bookingEmailFailed: "Your request was saved in the CRM, but the email notification could not be sent.", bookingError: "We couldn’t send your request. Please try again.",
       plans: [
         { name: "Silver", price: "25K EGP",
           cadence: "/month", billing: "Free forever",
@@ -102,6 +102,7 @@ export const dictionaries = {
     footer: {
       cta: "Ready to", highlight: "Maximize Your ROI?", start: "Start Your Campaign Now!", description: "VBN+ helps businesses grow with data-driven strategies and high-converting campaigns.", consultation: "Get a Free Consultation",
       links: ["Home", "Process", "Services", "Case Study", "Pricing"], logoLabel: "VBN+ home", newsletter: "Join our newsletter today and stay informed!", email: "Email address", submit: "Get Notified",
+      newsletterSubmitting: "Submitting…", newsletterSuccess: "You're subscribed. Thanks for joining us!", newsletterError: "We couldn't save your subscription. Please try again.",
       navLabel: "Footer navigation", newsletterLabel: "Newsletter signup",
       consent: "By subscribing you agree to our", privacy: "Privacy Policy", andUpdates: "and consent to receive updates from our company.", social: ["Instagram", "Facebook", "Twitter", "LinkedIn"],
     },
@@ -115,7 +116,7 @@ export const dictionaries = {
     hero: {
       navLabel: "التنقل الرئيسي",
       home: "الرئيسية", process: "منهجيتنا", services: "الخدمات", caseStudies: "دراسات الحالة", pricing: "الأسعار",
-      logoLabel: "الصفحة الرئيسية لVBN+", bookDemo: "احجز عرضًا توضيحيًا", consultation: "احصل على استشارة مجانية",
+      logoLabel: "الصفحة الرئيسية لVBN+", bookDemo: "اختر باقتك", consultation: "احصل على استشارة مجانية",
       titleLead: "احنا بنبني براندات", titleHighlight: " مش", titleEnd: "مجرد اعلانات",
       description: "بنؤمن أن كل علامة تجارية تمتلك قصة فريدة تستحق أن تُروى باحترافية، نترجم أفكاركم إلى حملات تسويقية تخطف الأنظار، تحقق أعلى العوائد.",
       trusted: "موثوقون لدى عشرات الشركاء في جميع أنحاء الجمهورية",
@@ -175,8 +176,8 @@ export const dictionaries = {
       metrics: ["سنوات من الخبرة", "إنجاز"],
     },
     pricing: {
-      badge: "خطط الأسعار", title: "خطط مرنة", highlight: "لنمو أعمالك", description: "اختر الخطة المناسبة لك.", included: "ما الذي تتضمنه الخطة", demo: "احجز عرضًا توضيحيًا", details: "تفاصيل الخطة",
-      bookingTitle: "احجز عرضًا توضيحيًا", bookingDescription: "أخبرنا ببيانات التواصل لنجهز لك استشارة حول هذه الباقة.", selectedPackage: "الباقة المختارة", priceLabel: "سعر الباقة", firstNameLabel: "الاسم الأول", lastNameLabel: "اسم العائلة", emailLabel: "البريد الإلكتروني", phoneLabel: "رقم الهاتف", businessTypeLabel: "نوع النشاط التجاري", addressLabel: "عنوان النشاط التجاري", messageLabel: "هل هناك معلومات أخرى تود إضافتها؟", submitBooking: "إرسال الطلب", submittingBooking: "جارٍ الإرسال…", cancelBooking: "إلغاء", submissionNotice: "سنستخدم هذه البيانات للتواصل معك بشأن الباقة المختارة.", bookingSuccess: "تم إرسال طلبك. سنتواصل معك قريبًا.", bookingError: "تعذر إرسال طلبك. حاول مرة أخرى.",
+      badge: "خطط الأسعار", title: "خطط مرنة", highlight: "لنمو أعمالك", description: "اختر الخطة المناسبة لك.", included: "ما الذي تتضمنه الخطة", demo: "اختر باقتك", details: "تفاصيل الخطة",
+      bookingTitle: "اختر باقتك", bookingDescription: "أخبرنا ببيانات التواصل لنجهز لك استشارة حول هذه الباقة.", consultationBookingTitle: "احصل على استشارة مجانية", consultationPackage: "استشارة مجانية", consultationDescription: "أخبرنا عن نشاطك التجاري وسنناقش معك الخطوات المناسبة.", consultationSubmissionNotice: "سنستخدم هذه البيانات للتواصل معك بشأن استشارتك المجانية.", selectedPackage: "الباقة المختارة", priceLabel: "سعر الباقة", firstNameLabel: "الاسم الأول", lastNameLabel: "اسم العائلة", emailLabel: "البريد الإلكتروني", phoneLabel: "رقم الهاتف", businessTypeLabel: "نوع النشاط التجاري", addressLabel: "عنوان النشاط التجاري", messageLabel: "هل هناك معلومات أخرى تود إضافتها؟", submitBooking: "إرسال الطلب", submittingBooking: "جارٍ الإرسال…", cancelBooking: "إلغاء", submissionNotice: "سنستخدم هذه البيانات للتواصل معك بشأن الباقة المختارة.", bookingSuccess: "تم إرسال طلبك. سنتواصل معك قريبًا.", bookingEmailFailed: "تم حفظ طلبك في نظام إدارة العملاء، لكن تعذر إرسال إشعار البريد الإلكتروني.", bookingError: "تعذر إرسال طلبك. حاول مرة أخرى.",
       // features: ["٢٢ تصميم فيسبوك", "٤ ريلز", "حملة اعلانية للتوعية", "تكامل مع CRM", "إدارة الملاحظات من Slack وHubSpot", "قناة Slack مخصصة"],
       plans: [
         { name: "الفضية", price: "25K EGP", 
@@ -209,6 +210,7 @@ export const dictionaries = {
     footer: {
       cta: "هل أنت مستعد لـ", highlight: "تعظيم عائدك؟", start: "ابدأ حملتك الآن!", description: "تساعد VBN+ الشركات على النمو باستراتيجيات قائمة على البيانات وحملات عالية التحويل.", consultation: "احصل على استشارة مجانية",
       links: ["الرئيسية", "منهجيتنا", "الخدمات", "دراسات الحالة", "الأسعار"], logoLabel: "الصفحة الرئيسية لVBN+", newsletter: "اشترك في نشرتنا البريدية وابقَ على اطلاع!", email: "البريد الإلكتروني", submit: "أبلغوني",
+      newsletterSubmitting: "جارٍ الإرسال…", newsletterSuccess: "تم الاشتراك بنجاح، شكرًا لانضمامك إلينا!", newsletterError: "تعذر حفظ اشتراكك. يُرجى المحاولة مرة أخرى.",
       navLabel: "روابط التذييل", newsletterLabel: "الاشتراك في النشرة البريدية",
       consent: "بالاشتراك، أنت توافق على", privacy: "سياسة الخصوصية", andUpdates: "وتوافق على تلقي تحديثات من شركتنا.", social: ["Instagram", "Facebook", "Twitter", "LinkedIn"],
     },

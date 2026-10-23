@@ -32,7 +32,7 @@ export default async function LocalizedHomePage({
         <div id="testimonial"><TestimonialSection dictionary={dictionary} locale={locale} /></div>
         <div id="pricing"><PricingSection dictionary={dictionary} locale={locale} /></div>
         <div id="faq"><FAQSection dictionary={dictionary} /></div>
-        <div id="consultation"><FinalCtaFooter dictionary={dictionary} /></div>
+        <div id="consultation"><FinalCtaFooter dictionary={dictionary} locale={locale} /></div>
       </main>
     </>
   );
