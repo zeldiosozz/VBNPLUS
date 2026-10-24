@@ -184,7 +184,8 @@ export default function PricingSection({ dictionary, locale }: { dictionary: Dic
                 })}
               </ul>
               
-              <a href={`/${locale}/pricing/${["starter", "enterprise", "project-based"][planIndex]}`} className="mt-auto mb-3 text-center text-[14px] font-semibold text-white/75 underline decoration-white/30 underline-offset-4 transition hover:text-white ">{copy.details}</a>
+              <p className="mt-auto mb-3 text-center text-[14px] font-semibold text-white/75 underline decoration-white/30 underline-offset-4 transition hover:text-white ">{copy.details}</p>
+              {/* <a href={`/${locale}/pricing/${["starter", "enterprise", "project-based"][planIndex]}`} className="mt-auto mb-3 text-center text-[14px] font-semibold text-white/75 underline decoration-white/30 underline-offset-4 transition hover:text-white ">{copy.details}</a> */}
               <button type="button" className="theme-component pricing-cta mt-auto mb-3 block w-full rounded-[8px] px-4 py-[13px] text-center text-[15px] font-medium leading-5 backdrop-blur-md bg-black/50"
                 onClick={(event) => {
                   handleClickConfetti(event);
